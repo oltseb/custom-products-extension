@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Oleksii_CustomProducts::custom_products_item" resource="Oleksii_CustomProducts::menu"
+             title="Custom Products" action="oleksii_custom_products/index/index" module="Oleksii_CustomProducts"
+             sortOrder="1" parent="Magento_Catalog::inventory" dependsOnModule="Magento_Catalog"/>
+    </menu>
+</config>

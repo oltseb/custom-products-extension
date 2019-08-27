@@ -1,0 +1,1 @@
+Menu element is moved to another tab, since in Magento 2.3.1 there is no one as mentioned
