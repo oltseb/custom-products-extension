@@ -8,7 +8,7 @@
         <item name="label" xsi:type="string" translate="true">Object Information</item>
         <item name="config" xsi:type="array">
             <item name="dataScope" xsi:type="string">data</item>
-            <item name="namespace" xsi:type="string">oleksii_custom_products_form</item>
+            <item name="namespace" xsi:type="string">products_form</item>
         </item>
         <item name="template" xsi:type="string">templates/form/collapsible</item>
         <!--<item name="buttons" xsi:type="array">-->

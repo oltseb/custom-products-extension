@@ -3,12 +3,13 @@
 namespace Oleksii\CustomProducts\Ui\DataProvider\Product;
 
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
+use Magento\Ui\DataProvider\AbstractDataProvider;
 
 /**
  * Class ProductDataProvider
  * @package Oleksii\CustomProducts\Ui\DataProvider\Product
  */
-class ProductDataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
+class ProductDataProvider extends AbstractDataProvider
 {
 
     /**
