@@ -1,11 +1,4 @@
 <?xml version="1.0"?>
-<!--
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
--->
-
 
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
@@ -23,7 +16,6 @@
         </referenceBlock>
         <referenceContainer name="content">
             <uiComponent name="custom_catalog"/>
-            <!--<block class="Magento\Catalog\Block\Adminhtml\Product" name="custom_products_list"/>-->
         </referenceContainer>
     </body>
 </page>

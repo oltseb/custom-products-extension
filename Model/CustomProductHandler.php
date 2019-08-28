@@ -11,7 +11,7 @@ use Magento\Framework\Exception\NoSuchEntityException;
  * Class CustomProduct
  * @package Oleksii\CustomProducts\Model
  */
-class CustomProductSaver extends AbstractModel {
+class CustomProductHandler extends AbstractModel {
 
     const ENTITY_FIELD = "entity_id";
 

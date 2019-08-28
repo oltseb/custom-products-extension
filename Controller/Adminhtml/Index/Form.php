@@ -3,12 +3,13 @@
 namespace Oleksii\CustomProducts\Controller\Adminhtml\Index;
 
 /**
- * Class Index
+ * Class Form
  * @package Oleksii\CustomProducts\Controller\Adminhtml\Index
  */
-class Index extends \Magento\Backend\App\Action
+class Form extends \Magento\Backend\App\Action
 {
 
+    /** @var string */
     const ADMIN_RESOURCE = 'Oleksii_CustomProducts::oleksii_custom_products_menu';
 
     /**
@@ -17,7 +18,7 @@ class Index extends \Magento\Backend\App\Action
     protected $resultPageFactory;
 
     /**
-     * Index constructor.
+     * NewAction constructor.
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      */
@@ -34,17 +35,6 @@ class Index extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-        $resultPage = $this->resultPageFactory->create();
-        $resultPage->getConfig()->getTitle()->prepend((__('Custom Products')));
-
-        return $resultPage;
-    }
-
-    /**
-     * @return bool
-     */
-    protected function _isAllowed()
-    {
-        return parent::_isAllowed('Oleksii_CustomProducts::menu');
+        return $this->resultPageFactory->create();
     }
 }

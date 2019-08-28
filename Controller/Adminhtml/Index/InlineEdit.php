@@ -6,7 +6,7 @@ use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Oleksii\CustomProducts\Helper\MessageServer;
-use Oleksii\CustomProducts\Model\CustomProductSaver;
+use Oleksii\CustomProducts\Model\CustomProductHandler;
 
 /**
  * Class InlineEdit
@@ -37,7 +37,7 @@ class InlineEdit extends \Magento\Backend\App\Action
     /**
      * @var
      */
-    protected $customProductSaver;
+    protected $customProductHandler;
 
     /**
      * InlineEdit constructor.
@@ -45,24 +45,26 @@ class InlineEdit extends \Magento\Backend\App\Action
      * @param JsonFactory $jsonFactory
      * @param ProductRepository $productRepository
      * @param MessageServer $messageServer
-     * @param CustomProductSaver $customProductSaver
+     * @param CustomProductHandler $customProductHandler
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         JsonFactory $jsonFactory,
         ProductRepository $productRepository,
         MessageServer $messageServer,
-        CustomProductSaver $customProductSaver
+        CustomProductHandler $customProductHandler
     )
     {
         $this->productRepository = $productRepository;
         $this->jsonFactory = $jsonFactory;
         $this->messageServer = $messageServer;
-        $this->customProductSaver = $customProductSaver;
+        $this->customProductHandler = $customProductHandler;
         parent::__construct($context);
     }
 
-
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|MessageServer
+     */
     public function execute()
     {
         $error = false;
@@ -75,7 +77,7 @@ class InlineEdit extends \Magento\Backend\App\Action
             if (is_array($items)) {
 
                 try {
-                    $this->customProductSaver->saveCustomProducts($items);
+                    $this->customProductHandler->saveCustomProducts($items);
                     $messages = $this::SUCCESS_MESSAGE;
                 } catch (\Exception $e) {
                     $messages = $e->getMessage();
