@@ -6,7 +6,9 @@ use Magento\Catalog\Model\AbstractModel;
 use Magento\Catalog\Model\ProductFactory;
 use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\Api\AttributeValueFactory;
+use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Setup\Exception;
 
 /**
  * Class CustomProduct
@@ -120,6 +122,11 @@ class CustomProductHandler extends AbstractModel {
         $product->setWebsiteIds(array(1));
         $product->setVisibility(4);
         $product->setPrice(array(1));
-        $this->productRepository->save($product);
+
+        try {
+            $this->productRepository->save($product);
+        } catch(\Exception $e) {
+            return $e;
+        }
     }
 }

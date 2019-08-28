@@ -57,16 +57,13 @@ class Save extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-
-
         $resultRedirect = $this->resultRedirectFactory->create();
-
         $data = $this->getRequest()->getPostValue();
 
         if ($data) {
 
-            if (empty($data['product_id'])) {
-                $data['product_id'] = null;
+            if (empty($data['sku'])) {
+                return $resultRedirect->setPath('*/*/form');
             }
 
             $this->customProductHandler->createCustomProducts($data);
