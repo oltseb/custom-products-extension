@@ -98,11 +98,28 @@ class CustomProductHandler extends AbstractModel {
         }
     }
 
-    public function createCustomProducts(array $items) {
+    public function createCustomProducts(array $data) {
 
-        foreach ($items as $item) {
-            $product = $this->productFactory->create($item);
-            $this->productRepository->save($product);
+        $product = $this->productFactory->create($data);
+
+        foreach ($data as $key => $value) {
+            if ($key === "form_key") {
+                continue;
+            }
+            $product->setData($key, $value);
         }
+
+        /**
+         * Since other was not declared -
+         * Let's assume that out target is to create product of constant types
+         * Otherwise, we are missing required values for the Product Model
+         */
+        $product->setName("CustomCatalogProduct_" . $product->getSku());
+        $product->setTypeId('simple');
+        $product->setAttributeSetId(4);
+        $product->setWebsiteIds(array(1));
+        $product->setVisibility(4);
+        $product->setPrice(array(1));
+        $this->productRepository->save($product);
     }
 }

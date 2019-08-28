@@ -58,32 +58,20 @@ class Save extends \Magento\Backend\App\Action
     public function execute()
     {
 
-        /**
-         * TODO clean up of constructor
-         */
-        $error = false;
-        $messages = [];
 
-        if ($this->getRequest()->getParam('isAjax')) {
+        $resultRedirect = $this->resultRedirectFactory->create();
 
-            $items = $this->getRequest()->getParams()['items'];
+        $data = $this->getRequest()->getPostValue();
 
-            if (is_array($items)) {
+        if ($data) {
 
-                try {
-                    $this->customProductHandler->createCustomProducts($items);
-                    $messages = $this::SUCCESS_MESSAGE;
-                } catch (\Exception $e) {
-                    $messages = $e->getMessage();
-                    $error = true;
-                }
-
-            } else {
-                $messages = self::ERROR_MESSAGE;
-                $error = true;
+            if (empty($data['product_id'])) {
+                $data['product_id'] = null;
             }
+
+            $this->customProductHandler->createCustomProducts($data);
         }
 
-        return $this->messageServer->packMessage($messages, $error);
+        return $resultRedirect->setPath('*/*/form');
     }
 }
