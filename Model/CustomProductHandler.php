@@ -3,6 +3,7 @@
 namespace Oleksii\CustomProducts\Model;
 
 use Magento\Catalog\Model\AbstractModel;
+use Magento\Catalog\Model\ProductFactory;
 use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\Api\AttributeValueFactory;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -19,15 +20,21 @@ class CustomProductHandler extends AbstractModel {
      * @var ProductRepository
      */
     protected $productRepository;
-    
+
     /**
-     * CustomProduct constructor.
+     * @var ProductFactory
+     */
+    protected $productFactory;
+
+    /**
+     * CustomProductHandler constructor.
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Framework\Api\ExtensionAttributesFactory $extensionFactory
      * @param AttributeValueFactory $customAttributeFactory
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param ProductRepository $productRepository
+     * @param ProductFactory $productFactory
      * @param \Magento\Framework\Model\ResourceModel\AbstractResource|null $resource
      * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
      * @param array $data
@@ -39,11 +46,13 @@ class CustomProductHandler extends AbstractModel {
         AttributeValueFactory $customAttributeFactory, 
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         ProductRepository $productRepository,
+        ProductFactory $productFactory,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null, 
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = [])
     {
         $this->productRepository = $productRepository;
+        $this->productFactory = $productFactory;
         parent::__construct(
             $context, 
             $registry, 
@@ -86,6 +95,14 @@ class CustomProductHandler extends AbstractModel {
             } catch (\Exception $e) {
                 return $e;
             }
+        }
+    }
+
+    public function createCustomProducts(array $items) {
+
+        foreach ($items as $item) {
+            $product = $this->productFactory->create($item);
+            $this->productRepository->save($product);
         }
     }
 }

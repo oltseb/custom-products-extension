@@ -1,11 +1,12 @@
 <?php
+
 namespace Oleksii\CustomProducts\Block\Adminhtml\Product\CustomNew;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 /**
  * Class BackButton
- * @package Oleksii\CustomProducts\Block\Adminhtml\Product\CustomNew
+ * @package Oleksii\CustomCatalog\Block\Adminhtml\Product\Edit
  */
 class BackButton extends GenericButton implements ButtonProviderInterface
 {
@@ -15,6 +16,7 @@ class BackButton extends GenericButton implements ButtonProviderInterface
      */
     public function getButtonData()
     {
+        
         return [
             'label' => __('Back'),
             'on_click' => sprintf("location.href = '%s';", $this->getBackUrl()),

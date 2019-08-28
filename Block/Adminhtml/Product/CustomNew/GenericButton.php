@@ -1,4 +1,5 @@
 <?php
+
 namespace Oleksii\CustomProducts\Block\Adminhtml\Product\CustomNew;
 
 /**
@@ -7,7 +8,6 @@ namespace Oleksii\CustomProducts\Block\Adminhtml\Product\CustomNew;
  */
 class GenericButton
 {
-
     /**
      * GenericButton constructor.
      * @param \Magento\Backend\Block\Widget\Context $context

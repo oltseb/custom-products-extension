@@ -4,7 +4,6 @@ namespace Oleksii\CustomProducts\Controller\Adminhtml\Index;
 
 use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\Controller\Result\JsonFactory;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Oleksii\CustomProducts\Helper\MessageServer;
 use Oleksii\CustomProducts\Model\CustomProductHandler;
 
@@ -67,6 +66,10 @@ class InlineEdit extends \Magento\Backend\App\Action
      */
     public function execute()
     {
+
+        /**
+         * TODO clean up of constructor
+         */
         $error = false;
         $messages = [];
 
