@@ -17,4 +17,9 @@ I mean, I can see it in the code, but it is not resolved
 Thus, I've copied it into the extension and make it work.
 Need to check the reason and make a PR for that into the product.
 
+
+````
+./magento queue:consumers:start:oleksii consumerOleksii &
+````
+
 === ===
