@@ -3,6 +3,7 @@
 namespace Oleksii\CustomProducts\Model\ApiExecutor;
 
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
+use Zend\Json\Json;
 
 /**
  * Class AbstractExecutor
@@ -16,14 +17,22 @@ abstract class AbstractExecutor {
     protected $collectionFactory;
 
     /**
+     * @var Json
+     */
+    protected $json;
+
+    /**
      * AbstractExecutor constructor.
      * @param CollectionFactory $collectionFactory
+     * @param Json $json
      */
     public function __construct(
-        CollectionFactory $collectionFactory
+        CollectionFactory $collectionFactory,
+        Json $json
     )
     {
         $this->collectionFactory = $collectionFactory;
+        $this->json = $json;
     }
 
 }

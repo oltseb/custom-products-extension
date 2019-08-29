@@ -12,7 +12,7 @@ class ProductGetterVpn extends AbstractExecutor {
      *
      * @api
      * @param string $vpn VPN value
-     * @return string
+     * @return array
      */
     public function execute($vpn)
     {

@@ -6,4 +6,10 @@
             <resource ref="Magento_Catalog::products"/>
         </resources>
     </route>
+    <route url="/V1/product/update/" method="PUT">
+        <service class="Oleksii\CustomProducts\Api\CustomProductUpdateInterface" method="execute"/>
+        <resources>
+            <resource ref="Magento_Catalog::products"/>
+        </resources>
+    </route>
 </routes>

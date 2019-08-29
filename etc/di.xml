@@ -4,4 +4,6 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Oleksii\CustomProducts\Api\VpnInterface"
                 type="Oleksii\CustomProducts\Model\ApiExecutor\ProductGetterVpn"/>
+    <preference for="Oleksii\CustomProducts\Api\CustomProductUpdateInterface"
+                type="Oleksii\CustomProducts\Model\ApiExecutor\ProductUpdater"/>
 </config>

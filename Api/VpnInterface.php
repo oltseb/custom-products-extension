@@ -12,7 +12,7 @@ interface VpnInterface {
      *
      * @api
      * @param string $vpn VPN value
-     * @return string
+     * @return array
      */
     public function execute($vpn);
 }
