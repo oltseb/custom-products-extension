@@ -4,7 +4,7 @@
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="Oleksii_CustomProducts::top" title="Custom Products">
-                    <resource id="Oleksii_CustomProducts::menu" title="Customer Products Menu Item"/>
+                    <resource id="Oleksii_CustomProducts::menu" title="Custom Products"/>
                 </resource>
             </resource>
         </resources>
