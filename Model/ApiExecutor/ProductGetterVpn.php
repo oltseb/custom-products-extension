@@ -2,11 +2,29 @@
 
 namespace Oleksii\CustomProducts\Model\ApiExecutor;
 
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
+
 /**
  * Class ProductGetterVpn
  * @package Oleksii\CustomProducts\Api\Executor
  */
-class ProductGetterVpn extends AbstractExecutor {
+class ProductGetterVpn {
+
+    /**
+     * @var CollectionFactory
+     */
+    protected $collectionFactory;
+
+    /**
+     * AbstractExecutor constructor.
+     * @param CollectionFactory $collectionFactory
+     */
+    public function __construct(
+        CollectionFactory $collectionFactory
+    )
+    {
+        $this->collectionFactory = $collectionFactory;
+    }
 
     /**
      *

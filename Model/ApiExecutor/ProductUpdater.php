@@ -2,13 +2,50 @@
 
 namespace Oleksii\CustomProducts\Model\ApiExecutor;
 
-use Magento\Framework\Exception\NoSuchEntityException;
+
+use Magento\Framework\MessageQueue\PublisherInterface;
+use Oleksii\CustomProducts\Api\MessageInterface;
+use Zend\Json\Json;
 
 /**
  * Class ProductGetterVpn
  * @package Oleksii\CustomProducts\Api\Executor
  */
-class ProductUpdater extends AbstractExecutor {
+class ProductUpdater {
+
+    const TOPIC_ARGUMENT = "customCatalog";
+
+    /**
+     * @var Json
+     */
+    protected $json;
+
+    /**
+     * @var MessageInterface
+     */
+    protected $message;
+
+    /**
+     * @var PublisherInterface
+     */
+    protected $publisher;
+
+    /**
+     * ProductUpdater constructor.
+     * @param Json $json
+     * @param MessageInterface $message
+     * @param PublisherInterface $publisher
+     */
+    public function __construct(
+        Json $json,
+        MessageInterface $message,
+        PublisherInterface $publisher
+    )
+    {
+        $this->json = $json;
+        $this->publisher = $publisher;
+        $this->message = $message;
+    }
 
     /**
      *
@@ -27,9 +64,14 @@ class ProductUpdater extends AbstractExecutor {
             "vpn" => $vpn
         ];
 
-        // TODO To be pushed further
-        $this->json->encode($message);
+        try {
+            $this->message->setMessage($this->json->encode($message));
+            $this->publisher->publish(self::TOPIC_ARGUMENT, $this->message);
+        } catch(\Exception $e) {
+            return $e->getMessage();
+        }
 
-        return $message;
+        //TODO check the string to be moved somewhere
+        return "Message was published";
     }
 }
