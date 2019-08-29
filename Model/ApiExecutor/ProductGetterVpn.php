@@ -43,6 +43,10 @@ class ProductGetterVpn {
 
         foreach ($items as $item) {
             foreach ($item->getData() as $key => $value) {
+
+                /**
+                 * Set easy to navigate json response
+                 */
                 $response[$item->getData("entity_id")][$key] = $value;
             }
         }

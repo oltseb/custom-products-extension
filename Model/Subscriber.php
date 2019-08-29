@@ -6,6 +6,10 @@ use Oleksii\CustomProducts\Api\MessageInterface;
 use Oleksii\CustomProducts\Api\SubscriberInterface;
 use Zend\Json\Json;
 
+/**
+ * Class Subscriber
+ * @package Oleksii\CustomProducts\Model
+ */
 class Subscriber implements SubscriberInterface
 {
 
@@ -40,7 +44,6 @@ class Subscriber implements SubscriberInterface
     {
         $data = array();
         $data[] = $this->json->decode($message->getMessage(), $this->json::TYPE_ARRAY);
-        var_dump($data);
         $this->productHandler->saveCustomProducts($data);
     }
 }

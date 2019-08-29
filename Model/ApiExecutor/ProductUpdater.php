@@ -5,6 +5,8 @@ namespace Oleksii\CustomProducts\Model\ApiExecutor;
 
 use Magento\Framework\MessageQueue\PublisherInterface;
 use Oleksii\CustomProducts\Api\MessageInterface;
+use Oleksii\CustomProducts\Helper\MessageStorage;
+use Psr\Log\LoggerInterface;
 use Zend\Json\Json;
 
 /**
@@ -31,19 +33,35 @@ class ProductUpdater {
     protected $publisher;
 
     /**
+     * @var MessageStorage
+     */
+    protected $messageStorage;
+
+    /**
+     * @var LoggerInterface
+     */
+    protected $logger;
+
+    /**
      * ProductUpdater constructor.
      * @param Json $json
      * @param MessageInterface $message
      * @param PublisherInterface $publisher
+     * @param MessageStorage $messageStorage
+     * @param LoggerInterface $logger
      */
     public function __construct(
         Json $json,
         MessageInterface $message,
-        PublisherInterface $publisher
+        PublisherInterface $publisher,
+        MessageStorage $messageStorage,
+        LoggerInterface $logger
     )
     {
         $this->json = $json;
+        $this->logger = $logger;
         $this->publisher = $publisher;
+        $this->messageStorage = $messageStorage;
         $this->message = $message;
     }
 
@@ -68,10 +86,10 @@ class ProductUpdater {
             $this->message->setMessage($this->json->encode($message));
             $this->publisher->publish(self::TOPIC_ARGUMENT, $this->message);
         } catch(\Exception $e) {
+            $this->logger->critical($e->getMessage());
             return $e->getMessage();
         }
 
-        //TODO check the string to be moved somewhere
-        return "Message was published";
+        return $this->messageStorage::SUCCESS_MESSAGE;
     }
 }
