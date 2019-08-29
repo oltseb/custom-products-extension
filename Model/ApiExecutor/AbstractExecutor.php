@@ -22,6 +22,11 @@ abstract class AbstractExecutor {
     protected $json;
 
     /**
+     *
+     */
+    protected $configOptionsListTest;
+
+    /**
      * AbstractExecutor constructor.
      * @param CollectionFactory $collectionFactory
      * @param Json $json

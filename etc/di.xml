@@ -6,4 +6,6 @@
                 type="Oleksii\CustomProducts\Model\ApiExecutor\ProductGetterVpn"/>
     <preference for="Oleksii\CustomProducts\Api\CustomProductUpdateInterface"
                 type="Oleksii\CustomProducts\Model\ApiExecutor\ProductUpdater"/>
+    <preference for="Oleksii\CustomProducts\Api\MessageInterface"
+                type="Oleksii\CustomProducts\Model\Message"/>
 </config>
