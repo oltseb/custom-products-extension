@@ -35,7 +35,7 @@ class Index extends \Magento\Backend\App\Action
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->getConfig()->getTitle()->prepend((__('Custom Products')));
+        $resultPage->getConfig()->getTitle()->prepend((__('Custom Catalog')));
 
         return $resultPage;
     }
