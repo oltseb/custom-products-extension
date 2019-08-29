@@ -69,6 +69,6 @@ class Save extends \Magento\Backend\App\Action
             $this->customProductHandler->createCustomProducts($data);
         }
 
-        return $resultRedirect->setPath('*/*/form');
+        return $resultRedirect->setPath('*/*/');
     }
 }

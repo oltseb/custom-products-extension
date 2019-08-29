@@ -71,7 +71,7 @@ class CustomProductHandler extends AbstractModel {
      * Function to save updated products from custom catalog
      *
      * @param array $items
-     * @return \Exception|NoSuchEntityException
+     * @return \Exception|NoSuchEntityException|bool
      */
     public function saveCustomProducts(array $items) {
 
@@ -98,6 +98,7 @@ class CustomProductHandler extends AbstractModel {
                 return $e;
             }
         }
+        return true;
     }
 
     public function createCustomProducts(array $data) {
@@ -121,7 +122,7 @@ class CustomProductHandler extends AbstractModel {
         $product->setAttributeSetId(4);
         $product->setWebsiteIds(array(1));
         $product->setVisibility(4);
-        $product->setPrice(array(1));
+        $product->setPrice(5);
 
         try {
             $this->productRepository->save($product);

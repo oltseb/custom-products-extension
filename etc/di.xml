@@ -8,4 +8,15 @@
                 type="Oleksii\CustomProducts\Model\ApiExecutor\ProductUpdater"/>
     <preference for="Oleksii\CustomProducts\Api\MessageInterface"
                 type="Oleksii\CustomProducts\Model\Message"/>
+    <preference for="Oleksii\CustomProducts\Api\SubscriberInterface"
+                type="Oleksii\CustomProducts\Model\Subscriber"/>
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="startConsumerCommandOleksii" xsi:type="object">
+                    Oleksii\CustomProducts\Console\StartConsumerCommand
+                </item>
+            </argument>
+        </arguments>
+    </type>
 </config>
