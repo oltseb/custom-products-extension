@@ -2,8 +2,6 @@
 
 namespace Oleksii\CustomProducts\Controller\Adminhtml\Index;
 
-use Magento\Framework\Controller\Result\JsonFactory;
-use Oleksii\CustomProducts\Helper\MessageServer;
 use Oleksii\CustomProducts\Model\CustomProductHandler;
 
 /**
@@ -14,18 +12,6 @@ class Save extends \Magento\Backend\App\Action
 {
 
     const ADMIN_RESOURCE = 'Oleksii_CustomProducts::oleksii_custom_products_menu';
-    const ERROR_MESSAGE = 'Ooops! Something went wrong. Please try again';
-    const SUCCESS_MESSAGE = 'All good';
-
-    /**
-     * @var JsonFactory
-     */
-    protected $jsonFactory;
-
-    /**
-     * @var MessageServer
-     */
-    protected $messageServer;
 
     /**
      * @var CustomProductHandler
@@ -35,25 +21,19 @@ class Save extends \Magento\Backend\App\Action
     /**
      * Save constructor.
      * @param \Magento\Backend\App\Action\Context $context
-     * @param JsonFactory $jsonFactory
-     * @param MessageServer $messageServer
      * @param CustomProductHandler $customProductHandler
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        JsonFactory $jsonFactory,
-        MessageServer $messageServer,
         CustomProductHandler $customProductHandler
     )
     {
-        $this->jsonFactory = $jsonFactory;
-        $this->messageServer = $messageServer;
         $this->customProductHandler = $customProductHandler;
         parent::__construct($context);
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|MessageServer
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Redirect|\Magento\Framework\Controller\ResultInterface
      */
     public function execute()
     {
