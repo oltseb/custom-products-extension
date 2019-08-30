@@ -11,10 +11,8 @@ use Psr\Log\LoggerInterface;
  * Class InlineEdit
  * @package Oleksii\CustomProducts\Controller\Adminhtml\Index
  */
-class InlineEdit extends \Magento\Backend\App\Action
+class InlineEdit extends ActionAbstract
 {
-
-    const ADMIN_RESOURCE = 'Oleksii_CustomProducts::oleksii_custom_products_menu';
 
     /**
      * @var MessageStorage

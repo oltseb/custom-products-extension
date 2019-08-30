@@ -27,14 +27,6 @@ class GenericButton
     }
 
     /**
-     * @return string
-     */
-    public function getDeleteUrl()
-    {
-        return $this->getUrl('*/*/delete', ['object_id' => $this->getObjectId()]);
-    }
-
-    /**
      * @param string $route
      * @param array $params
      * @return string
@@ -44,11 +36,4 @@ class GenericButton
         return $this->context->getUrlBuilder()->getUrl($route, $params);
     }
 
-    /**
-     * @return mixed
-     */
-    public function getObjectId()
-    {
-        return $this->context->getRequest()->getParam('product_id');
-    }
 }

@@ -9,11 +9,8 @@ use Magento\Framework\View\Result\PageFactory;
  * Class Form
  * @package Oleksii\CustomProducts\Controller\Adminhtml\Index
  */
-class Form extends \Magento\Backend\App\Action
+class Form extends ActionAbstract
 {
-
-    /** @var string */
-    const ADMIN_RESOURCE = 'Oleksii_CustomProducts::oleksii_custom_products_menu';
 
     /**
      * @var PageFactory
@@ -41,11 +38,4 @@ class Form extends \Magento\Backend\App\Action
         return $this->resultPageFactory->create();
     }
 
-    /**
-     * @return bool
-     */
-    protected function _isAllowed()
-    {
-        return parent::_isAllowed('Oleksii_CustomProducts::menu');
-    }
 }

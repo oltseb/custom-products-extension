@@ -8,10 +8,8 @@ use Oleksii\CustomProducts\Model\CustomProductHandler;
  * Class InlineEdit
  * @package Oleksii\CustomProducts\Controller\Adminhtml\Index
  */
-class Save extends \Magento\Backend\App\Action
+class Save extends ActionAbstract
 {
-
-    const ADMIN_RESOURCE = 'Oleksii_CustomProducts::oleksii_custom_products_menu';
 
     /**
      * @var CustomProductHandler

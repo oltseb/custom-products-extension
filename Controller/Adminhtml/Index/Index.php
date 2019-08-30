@@ -6,10 +6,8 @@ namespace Oleksii\CustomProducts\Controller\Adminhtml\Index;
  * Class Index
  * @package Oleksii\CustomProducts\Controller\Adminhtml\Index
  */
-class Index extends \Magento\Backend\App\Action
+class Index extends ActionAbstract
 {
-
-    const ADMIN_RESOURCE = 'Oleksii_CustomProducts::oleksii_custom_products_menu';
 
     /**
      * @var \Magento\Framework\View\Result\PageFactory
@@ -40,11 +38,4 @@ class Index extends \Magento\Backend\App\Action
         return $resultPage;
     }
 
-    /**
-     * @return bool
-     */
-    protected function _isAllowed()
-    {
-        return parent::_isAllowed('Oleksii_CustomProducts::menu');
-    }
 }
