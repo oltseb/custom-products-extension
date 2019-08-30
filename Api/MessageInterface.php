@@ -3,6 +3,9 @@
 namespace Oleksii\CustomProducts\Api;
 
 /**
+ *
+ * Message publisher interface
+ *
  * Interface MessageInterface
  * @package Oleksii\CustomProducts\Api
  */

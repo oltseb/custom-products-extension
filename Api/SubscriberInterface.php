@@ -2,6 +2,13 @@
 
 namespace Oleksii\CustomProducts\Api;
 
+/**
+ *
+ * Message subscriber interface
+ *
+ * Interface SubscriberInterface
+ * @package Oleksii\CustomProducts\Api
+ */
 interface SubscriberInterface
 {
     /**

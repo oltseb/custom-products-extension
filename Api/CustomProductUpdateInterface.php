@@ -3,6 +3,9 @@
 namespace Oleksii\CustomProducts\Api;
 
 /**
+ *
+ * Interface for update API
+ *
  * Class ApiAbstract
  * @package Oleksii\CustomProducts\Api
  */

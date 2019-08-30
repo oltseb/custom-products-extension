@@ -3,6 +3,9 @@
 namespace Oleksii\CustomProducts\Api;
 
 /**
+ *
+ * Interface for get by VPN API
+ *
  * Class ApiAbstract
  * @package Oleksii\CustomProducts\Api
  */
