@@ -7,6 +7,7 @@ use Magento\Catalog\Model\ProductFactory;
 use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\Api\AttributeValueFactory;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Oleksii\CustomProducts\Helper\MessageStorage;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -35,7 +36,12 @@ class CustomProduct extends AbstractModel
     protected $logger;
 
     /**
-     * CustomProductHandler constructor.
+     * @var MessageStorage
+     */
+    protected $messageStorage;
+
+    /**]
+     * CustomProduct constructor.
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Framework\Api\ExtensionAttributesFactory $extensionFactory
@@ -44,6 +50,7 @@ class CustomProduct extends AbstractModel
      * @param ProductRepository $productRepository
      * @param ProductFactory $productFactory
      * @param LoggerInterface $logger
+     * @param MessageStorage $messageStorage
      * @param \Magento\Framework\Model\ResourceModel\AbstractResource|null $resource
      * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
      * @param array $data
@@ -57,6 +64,7 @@ class CustomProduct extends AbstractModel
         ProductRepository $productRepository,
         ProductFactory $productFactory,
         LoggerInterface $logger,
+        MessageStorage $messageStorage,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = [])
@@ -64,6 +72,7 @@ class CustomProduct extends AbstractModel
         $this->productRepository = $productRepository;
         $this->productFactory = $productFactory;
         $this->logger = $logger;
+        $this->messageStorage = $messageStorage;
         parent::__construct(
             $context,
             $registry,
@@ -132,7 +141,7 @@ class CustomProduct extends AbstractModel
         }
 
         if ($product) {
-            return new \Exception("Product with such SKU exists");
+            return new \Exception($this->messageStorage::SKU_ALREADY_EXISTS);
         }
 
         $product = $this->productFactory->create($data);
@@ -156,7 +165,12 @@ class CustomProduct extends AbstractModel
         return true;
     }
 
-    protected function fillRequiredValues($product) {
+    /**
+     * @param $product
+     * @return mixed
+     */
+    protected function fillRequiredValues($product)
+    {
 
         /**
          * Since other was not declared -

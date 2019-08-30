@@ -17,10 +17,16 @@ I mean, I can see it in the code, but it is not resolved
 Thus, I've copied it into the extension and make it work.
 Need to check the reason and make a PR for that into the product.
 
+To run it -
 
 ````
 ./magento queue:consumers:start:oleksii consumerOleksii &
 ````
 
+But it is the exact copy of, just created because of the core bug in M2.3.1
+
+````
+./magento queue:consumers:start consumerOleksii &
+````
 
 === ===
