@@ -44,6 +44,6 @@ class Subscriber implements SubscriberInterface
     {
         $data = array();
         $data[] = $this->json->decode($message->getMessage(), $this->json::TYPE_ARRAY);
-        $this->productHandler->saveCustomProducts($data);
+        $this->productHandler->handleCustomProductsData($data);
     }
 }

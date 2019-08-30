@@ -43,12 +43,12 @@ class FormDataProvider extends AbstractDataProvider
      */
     public function getData()
     {
-        $this->_loadedData = [];
 
         if(isset($this->_loadedData)) {
             return $this->_loadedData;
         }
 
+        $this->_loadedData = [];
         $items = $this->collection->getItems();
 
         foreach($items as $product)

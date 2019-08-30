@@ -74,7 +74,7 @@ class InlineEdit extends ActionAbstract
             if (is_array($items)) {
 
                 try {
-                    $this->customProductHandler->saveCustomProducts($items);
+                    $this->customProductHandler->handleCustomProductsData($items);
                     $messages = $this->messageStorage::SUCCESS_MESSAGE;
                 } catch (\Exception $e) {
                     $this->logger->critical($e->getMessage());
